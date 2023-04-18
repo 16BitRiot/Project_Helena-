@@ -1,41 +1,12 @@
-CREATE DATABASE project_helena;
-
-USE project_helena;
-
-CREATE TABLE USERS (
-  ID INT PRIMARY KEY,
-  SCHOOL_ID INT,
-  FIRST_NAME TEXT,
-  LAST_NAME TEXT,
-  DEPARTMENT TEXT
-);
-
 INSERT INTO USERS (ID, SCHOOL_ID, FIRST_NAME, LAST_NAME, DEPARTMENT)
 VALUES (1, 12345, 'Sarah', 'Manning', 'Art'),
        (2, 12345, 'Alison', 'Hendrix', 'Film'),
        (3, 12345, 'Cosima', 'Niehaus', 'Photography');
 
-CREATE TABLE POLICIES (
-  ID INT PRIMARY KEY,
-  CHECKOUT_POLICY TEXT,
-  RESERVATION_POLICY TEXT,
-  DEPARTMENT_POLICY TEXT
-);
-
 INSERT INTO POLICIES (ID, CHECKOUT_POLICY, RESERVATION_POLICY, DEPARTMENT_POLICY) VALUES
 (1, '3 day maximum checkout', 'No reservations', 'Art Department'),
 (2, '1 week maximum checkout', '2 week maximum reservation', 'Science Department'),
 (3, '24 hour maximum checkout', 'No reservations', 'History Department');
-
-CREATE TABLE EQUIPMENT (
-  ID INT PRIMARY KEY,
-  NAME TEXT,
-  DESCRIPTION TEXT,
-  AVAILABLE BOOLEAN,
-  CHECKED_OUT_BY INT,
-  CHECKED_OUT_DATE DATE,
-  DUE_DATE DATE
-);
 
 INSERT INTO EQUIPMENT (ID, NAME, DESCRIPTION, AVAILABLE, CHECKED_OUT_BY, CHECKED_OUT_DATE, DUE_DATE) VALUES
 (1, 'Canon EOS Rebel T7i', 'DSLR camera with 24.2 megapixel APS-C CMOS sensor', true, null, null, null),
