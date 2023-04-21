@@ -11,7 +11,8 @@ VALUES (1, 12345, 'Sarah', 'Manning', 'Art'),
     (7, 12345, 'Tony', 'Sawicki', 'Drama'),
     (8, 12345, 'Krystal', 'Goderitch', 'Cosmetology'),
     (9, 12345, 'Delphine', 'Cormier', 'Biology'),
-    (10, 12345, 'Pupok', 'the Cat', 'Animal Sciences');
+    (10, 12345, 'Pupok', 'the Cat', 'Animal Sciences')
+ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO policies (ID, CHECKOUT_POLICY, RESERVATION_POLICY, DEPARTMENT_POLICY) VALUES
 (1, '3 day maximum checkout', 'No reservations', 'Art Department'),
@@ -23,7 +24,8 @@ INSERT INTO policies (ID, CHECKOUT_POLICY, RESERVATION_POLICY, DEPARTMENT_POLICY
 (7, '5 day maximum checkout', '2 week maximum reservation', 'Photography Department'),
 (8, '2 day maximum checkout', 'No reservations', 'Art Department'),
 (9, '3 week maximum checkout', '6 week maximum reservation', 'Science Department'),
-(10, '24 hour maximum checkout', 'No reservations', 'Film Department');
+(10, '24 hour maximum checkout', 'No reservations', 'Film Department')
+ON CONFLICT (id) DO NOTHING;
 
 
 INSERT INTO equipment (ID, NAME, DESCRIPTION, VALUE, AVAILABLE, CHECKED_OUT_BY, CHECKED_OUT_DATE, DUE_DATE) VALUES
@@ -38,5 +40,5 @@ INSERT INTO equipment (ID, NAME, DESCRIPTION, VALUE, AVAILABLE, CHECKED_OUT_BY, 
 (9, 'Sennheiser MKH 416-P48U3 Shotgun Microphone', 'Short gun interference tube microphone with switchable bass roll-off', 999, true, null, null, null),
 (10, 'Zoom H6 Six-Track Portable Recorder', 'Portable audio recorder with interchangeable input capsules', 329, true, null, null, null),
 (11, 'Manfrotto 1314B Background Support System', 'Portable support system for backgrounds up to 12 x 12 feet', 299, true, null, null, null),
-(12, 'Kino Flo Diva-Lite 20 LED DMX Kit', 'LED light kit with 3200K to 5600K color temperature range and DMX control', 3599, true, null, null, null);
-
+(12, 'Kino Flo Diva-Lite 20 LED DMX Kit', 'LED light kit with 3200K to 5600K color temperature range and DMX control', 3599, true, null, null, null)
+ON CONFLICT (id) DO NOTHING;

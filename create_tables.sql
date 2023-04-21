@@ -2,21 +2,26 @@
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
-  email VARCHAR(50) NOT NULL,
-  password VARCHAR(100) NOT NULL
+  school_id INTEGER NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  department VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE policies (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
-  description TEXT NOT NULL,
-  active BOOLEAN NOT NULL DEFAULT TRUE
+  checkout_policy VARCHAR(100) NOT NULL,
+  reservation_policy VARCHAR(100) NOT NULL,
+  department_policy VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE equipment (
   id SERIAL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description TEXT NOT NULL,
-  available BOOLEAN NOT NULL DEFAULT TRUE
+  value INTEGER NOT NULL,
+  available BOOLEAN NOT NULL DEFAULT TRUE,
+  checked_out_by INTEGER,
+  checked_out_date DATE,
+  due_date DATE
 );

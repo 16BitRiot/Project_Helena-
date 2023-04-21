@@ -1,0 +1,68 @@
+from flask import Flask, jsonify, render_template, request
+import psycopg2
+
+app = Flask(__name__)
+
+# Replace the values with your actual database credentials
+DB_HOST = "localhost"
+DB_NAME = "project_helena"
+DB_USER = "philfryer"
+
+def connect_to_db():
+    conn = psycopg2.connect(
+        host=DB_HOST,
+        database=DB_NAME,
+        user=DB_USER
+    )
+    return conn
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+@app.route('/users')
+def get_users():
+    conn = connect_to_db()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users")
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(rows)
+
+@app.route('/equipment')
+def get_equipment():
+    conn = connect_to_db()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM equipment")
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(rows)
+
+@app.route('/policies')
+def get_policies():
+    conn = connect_to_db()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM policies")
+    rows = cur.fetchall()
+    cur.close()
+    conn.close()
+    return jsonify(rows)
+
+@app.route('/category', methods=['POST'])
+def get_category():
+    category = request.form['category']
+    if category == 'users':
+        return get_users()
+    elif category == 'equip':
+        # Add your code to get equipment data here
+        return get_equipment()
+    elif category == 'policy':
+        # Add your code to get policy data here
+        return get_policies()
+    else:
+        return 'Invalid category'
+
+if __name__ == '__main__':
+    app.run()
